@@ -7,3 +7,6 @@ version          "1.0.0"
 %w{ ubuntu }.each do |os|
   supports os
 end
+
+depends "bluepill"
+depends "git"
