@@ -28,7 +28,7 @@ default["sickbeard"]["data_dir"] = '/media/sickbeard'
 default["sickbeard"]["log_dir"] = '/var/log/sickbeard'
 
 # Valid Options: 
-#  bluepill
+#  bluepill, runit
 default["sickbeard"]["init_style"] = 'bluepill'
 
 # Valid Options: 

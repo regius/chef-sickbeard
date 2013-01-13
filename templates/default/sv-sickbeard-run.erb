@@ -1,0 +1,4 @@
+#!/bin/bash
+exec 2>&1
+cd <%= node['sickbeard']['install_dir'] %>
+exec chpst -u <%= node['sickbeard']['user'] %> python SickBeard.py -p <%= node["sickbeard"]["listen_port"] %> --config <%= node["sickbeard"]["config_dir"] %>/sickbeard.ini --datadir <%= node["sickbeard"]["data_dir"] %>

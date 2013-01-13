@@ -45,11 +45,33 @@ git node['sickbeard']['install_dir'] do
   revision node['sickbeard']['git_ref']                                   
   action :sync                                     
   user node['sickbeard']['user']                 
-  group node['sickbeard']['group']                      
-  notifies :restart, "bluepill_service[sickbeard]", :immediately
+  group node['sickbeard']['group']
+  case node['sickbeard']['init_style']
+  when 'runit'
+    notifies :restart, "service[sickbeard]", :immediately
+  when 'bluepill'
+    notifies :restart, "bluepill_service[sickbeard]", :immediately
+  end
 end
 
 case node["sickbeard"]["init_style"]
+when 'runit'
+  include_recipe 'runit'
+
+  runit_service 'sickbeard' do
+    action :start
+  end
+
+  # Configure a resource to start, stop and restart the service
+  # This can be merged with the runit_service resource when CHEF-2336 and CHEF-154 are resolved.
+  service "sickbeard" do
+    stop_command "sv stop sickbeard"
+    restart_command "sv restart sickbeard"
+    reload_command "sv hup sickbeard"
+    supports :status => true, :restart => true, :reload => true
+    action :nothing
+  end
+
 when 'bluepill'
 
   include_recipe "bluepill"

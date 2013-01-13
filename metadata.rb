@@ -9,4 +9,5 @@ version          "1.0.0"
 end
 
 depends "bluepill"
+depends "runit"
 depends "git"
