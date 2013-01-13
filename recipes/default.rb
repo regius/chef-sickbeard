@@ -19,10 +19,10 @@
 
 user node['sickbeard']['user'] do
   shell '/bin/bash'
-  comment 'Web Application - Sickbeard'
-  home node['sickbeard']['install_dir']
   system true
 end
+
+group node['sickbeard']['group']
 
 app_dirs = [ 
   "#{node['sickbeard']['install_dir']}", 
