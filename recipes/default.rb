@@ -24,9 +24,9 @@ end
 
 group node['sickbeard']['group']
 
-app_dirs = [ 
-  "#{node['sickbeard']['install_dir']}", 
-  "#{node['sickbeard']['config_dir']}", 
+app_dirs = [
+  "#{node['sickbeard']['install_dir']}",
+  "#{node['sickbeard']['config_dir']}",
   "#{node['sickbeard']['log_dir']}",
   "#{node['sickbeard']['data_dir']}"
   ]
@@ -42,9 +42,9 @@ end
 
 git node['sickbeard']['install_dir'] do
   repository node['sickbeard']['git_url']
-  revision node['sickbeard']['git_ref']                                   
-  action :sync                                     
-  user node['sickbeard']['user']                 
+  revision node['sickbeard']['git_ref']
+  action :sync
+  user node['sickbeard']['user']
   group node['sickbeard']['group']
   case node['sickbeard']['init_style']
   when 'runit'
