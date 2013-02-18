@@ -58,19 +58,7 @@ case node["sickbeard"]["init_style"]
 when 'runit'
   include_recipe 'runit'
 
-  runit_service 'sickbeard' do
-    action :start
-  end
-
-  # Configure a resource to start, stop and restart the service
-  # This can be merged with the runit_service resource when CHEF-2336 and CHEF-154 are resolved.
-  service "sickbeard" do
-    stop_command "sv stop sickbeard"
-    restart_command "sv restart sickbeard"
-    reload_command "sv hup sickbeard"
-    supports :status => true, :restart => true, :reload => true
-    action :nothing
-  end
+  runit_service 'sickbeard'
 
 when 'bluepill'
 
