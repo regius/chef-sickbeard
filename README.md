@@ -25,7 +25,8 @@ In future we will support alternative install styles (node['sickbeard']['install
 
 ### Init style
 
-Choose if you want to supervicse sickbeard with ether bluepill (default) or runit. Just change the attribute default["sickbeard"]["init_style"] accordingly.
+Choose if you want to supervicse sickbeard with ether bluepill (default) or runit. Just change the attribute `default["sickbeard"]["init_style"] = ('bluepill'|'runit')` accordingly.
+
 ### Removal
 
 If for some reason you want to stop using the 'sickbeard' recipe, then use recipe[sickbeard::purge].
