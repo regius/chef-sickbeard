@@ -23,6 +23,9 @@ If you want to track the 'develop' branch, or even a specific tag, then you can 
 
 In future we will support alternative install styles (node['sickbeard']['install_style']) such as using Apt PPAs.
 
+### Init style
+
+Choose if you want to supervicse sickbeard with ether bluepill (default) or runit. Just change the attribute default["sickbeard"]["init_style"] accordingly.
 ### Removal
 
 If for some reason you want to stop using the 'sickbeard' recipe, then use recipe[sickbeard::purge].
